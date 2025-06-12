@@ -1,0 +1,29 @@
+class Solution {
+    public int solution(int[] array) {
+        int max = 0;
+        int maxCount = 0;
+        int[] count = new int[1001];
+        // count 배열에 카운팅
+        for(int i=0; i<array.length; i++){
+            count[array[i]]++;
+        }
+        // max : 최빈수 / maxCount : 최빈수의 횟수 저장
+        for(int i =0; i<count.length; i++){
+            if(maxCount < count[i]){
+                max = i;
+                maxCount = count[i];
+            } 
+        }
+        // 최빈수의 횟수가 몇 개인지 판별
+        int maxCount2 = 0;
+        for(int i = 0; i<count.length; i++){
+            if(count[i] == maxCount){
+                maxCount2++;
+            }
+        }
+        if(maxCount2 > 1){
+            max = -1;
+        }
+        return max;
+    }
+}
